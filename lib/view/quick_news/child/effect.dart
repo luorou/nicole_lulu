@@ -18,7 +18,13 @@ Effect<QuickNewsChildState> buildEffect() {
   });
 }
 
+void _requestRefresh(Action action, Context<QuickNewsChildState> ctx) {
+  ctx.state.refreshController.requestRefresh();
+//  ctx.dispatch(QuickNewsChildActionCreator.refresh());
+}
+
 void _initState(Action action, Context<QuickNewsChildState> ctx) {
+//  ctx.state.refreshController.requestRefresh();
   ctx.dispatch(QuickNewsChildActionCreator.refresh());
 }
 
@@ -35,10 +41,10 @@ void _loadMore(Action action, Context<QuickNewsChildState> ctx) {
 }
 
 Future<void> _netData(Action action, Context<QuickNewsChildState> ctx) async {
-  var res = await ApiHelper.getQueryNews(ctx.state.mId,ctx.state.mPageNumber);
+  var res = await ApiHelper.getQueryNews(ctx.state.mId, ctx.state.mPageNumber);
   var data = json.decode(res.toString());
   NewsResponse entity = JsonConvert.fromJsonAsT(data);
-  if (entity!=null&&entity.obj!=null&&entity.obj.isNotEmpty) {
+  if (entity != null && entity.obj != null) {
     ctx.dispatch(QuickNewsChildActionCreator.returnData(entity.obj));
   }
 }
