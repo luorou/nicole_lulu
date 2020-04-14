@@ -30,6 +30,5 @@ Future<void> _initState(Action action, Context<FuturesState> ctx) async {
 }
 
 Future<void> _onItemClick(Action action, Context<FuturesState> ctx) async {
-  ModelObj obj = action.payload;
-  await JumpUtils.jumpQuotesDetail(ctx.context, {"obj": obj});
+  await JumpUtils.jumpQuotesDetail(ctx.context, {"id": action.payload});
 }

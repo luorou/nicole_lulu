@@ -20,7 +20,7 @@ class KLineEntity extends KEntity with JsonConvert<KLineEntity> {
   double amount;
   @JSONField(name: "V")
   double vol;
-  double change=0;
+  double change=1;
   double ratio=0;
 
   KLineEntity({this.amount, this.open, this.close, this.time, this.high, this.low, this.vol, this.change, this.ratio});

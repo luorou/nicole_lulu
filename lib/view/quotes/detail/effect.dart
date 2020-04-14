@@ -9,15 +9,17 @@ import 'state.dart';
 
 Effect<QuotesDetailState> buildEffect() {
   return combineEffects(<Object, Effect<QuotesDetailState>>{
-    QuotesDetailAction.action: _onAction,
     Lifecycle.initState: _initState,
+    QuotesDetailAction.queryComkmByType: _queryComkmByType,
   });
 }
 
-void _onAction(Action action, Context<QuotesDetailState> ctx) {}
-
 Future<void> _initState(Action action, Context<QuotesDetailState> ctx) async {
-  var res = await ApiHelper.getQueryComkmByType(ctx.state.modelObj.fS);
+  ctx.dispatch(QuotesDetailActionCreator.queryComkmByType("D"));
+}
+
+Future<void> _queryComkmByType(Action action, Context<QuotesDetailState> ctx) async {
+  var res = await ApiHelper.getQueryComkmByType(ctx.state.mId, action.payload);
   var data = json.decode(res.toString());
   KLineResponse entity = JsonConvert.fromJsonAsT(data);
   if (entity.obj != null && entity.obj.isNotEmpty) {

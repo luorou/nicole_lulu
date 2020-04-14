@@ -2,6 +2,16 @@ import '../method_url.dart';
 import '../net_hard.dart';
 
 class ApiHelper {
+
+  static Future getQueryComByType(String id) async {
+    Map<String, dynamic> map = new Map();
+    map["withks"] = 0;
+    map["withticks"] = 0;
+    map["symbol"] = id;
+    var res = await NetHard.getRequest(UrlMethod.KEY_QUERY_COM, queryParameters: map);
+    return res;
+  }
+
   static Future getQueryCompByType(String id) async {
     Map<String, dynamic> map = new Map();
     map["p"] = "1";
@@ -14,10 +24,9 @@ class ApiHelper {
     return res;
   }
 
-
-  static Future getQueryComkmByType(String id) async {
+  static Future getQueryComkmByType(String id, String period) async {
     Map<String, dynamic> map = new Map();
-    map["period"] = "D";
+    map["period"] = period;
     map["pidx"] = "1";
     map["psize"] = 500;
     map["symbol"] = id;

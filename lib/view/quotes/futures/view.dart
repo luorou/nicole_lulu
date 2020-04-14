@@ -122,7 +122,7 @@ Widget buildItem(dispatch, ModelObj obj) {
     ),
     child1Alignment: Alignment.center,
     onClick: (){
-      dispatch(FuturesActionCreator.onItemClick(obj));
+      dispatch(FuturesActionCreator.onItemClick(obj.fS));
     },
   );
 }

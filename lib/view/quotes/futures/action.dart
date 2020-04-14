@@ -12,7 +12,7 @@ class FuturesActionCreator {
     return Action(FuturesAction.returnListData, payload: list);
   }
 
-  static Action onItemClick(ModelObj obj) {
+  static Action onItemClick(String obj) {
     return Action(FuturesAction.onItemClick, payload: obj);
   }
 }
