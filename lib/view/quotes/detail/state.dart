@@ -23,7 +23,7 @@ QuotesDetailState initState(Map<String, dynamic> args) {
   QuotesDetailState state = QuotesDetailState();
   state.mId = args["id"];
   state.mDataList = List();
-  state.kLineSecondaryState = SecondaryState.NONE;
-  state.kLineMainState = MainState.NONE;
+  state.kLineSecondaryState = SecondaryState.KDJ;
+  state.kLineMainState = MainState.BOLL;
   return state;
 }

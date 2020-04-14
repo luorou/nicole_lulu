@@ -1,10 +1,6 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:nicolelulu/model/news_response.dart';
 
-//TODO replace with your own action
 enum QuickNewsAction { action }
 
-class QuickNewsActionCreator {
-  static Action onAction() {
-    return const Action(QuickNewsAction.action);
-  }
-}
+class QuickNewsActionCreator {}
